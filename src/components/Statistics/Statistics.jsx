@@ -6,17 +6,12 @@ const Statistics = ({ goodReview, badReview, neutralReview }) => {
   const [totalFeedback, setTotalFeedback] = useState(0);
   const [PositiveFeedbackPercentage, setPositiveFeedbackPercentage] =
     useState(0);
-  function countTotalFeedback() {
+
+  useEffect(() => {
     setTotalFeedback(goodReview + badReview + neutralReview);
-  }
-  function countPositiveFeedbackPercentage() {
     setPositiveFeedbackPercentage(
       Math.round((goodReview / (neutralReview + badReview + goodReview)) * 100)
     );
-  }
-  useEffect(() => {
-    countTotalFeedback();
-    countPositiveFeedbackPercentage();
   }, [goodReview, badReview, neutralReview]);
   return (
     <ul className="StatisticsList">
