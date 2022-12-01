@@ -1,36 +1,31 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-import './Statistics.css';
+import css from './Statistics.module.css';
 
-const Statistics = ({ goodReview, badReview, neutralReview }) => {
-  const [totalFeedback, setTotalFeedback] = useState(0);
-  const [PositiveFeedbackPercentage, setPositiveFeedbackPercentage] =
-    useState(0);
-
-  useEffect(() => {
-    setTotalFeedback(goodReview + badReview + neutralReview);
-    setPositiveFeedbackPercentage(
-      Math.round((goodReview / (neutralReview + badReview + goodReview)) * 100)
-    );
-  }, [goodReview, badReview, neutralReview]);
+const Statistics = ({
+  goodReview,
+  badReview,
+  neutralReview,
+  total,
+  positivePercentage,
+}) => {
   return (
-    <ul className="StatisticsList">
-      <li className="StatisticsItem">
+    <ul className={css.StatisticsList}>
+      <li className={css.StatisticsItem}>
         Good:<span>{goodReview}</span>
       </li>
-      <li className="StatisticsItem">
+      <li className={css.StatisticsItem}>
         Bad:<span>{badReview}</span>
       </li>
-      <li className="StatisticsItem">
+      <li className={css.StatisticsItem}>
         Neutral:<span>{neutralReview}</span>
       </li>
-      <li className="StatisticsItem">
+      <li className={css.StatisticsItem}>
         Total:
-        <span>{totalFeedback}</span>
+        <span>{total}</span>
       </li>
       <li>
         Positive feedback:
-        <span>{PositiveFeedbackPercentage}%</span>
+        <span>{positivePercentage}%</span>
       </li>
     </ul>
   );
@@ -40,5 +35,7 @@ Statistics.propTypes = {
   goodReview: PropTypes.number.isRequired,
   badReview: PropTypes.number.isRequired,
   neutralReview: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
 export default Statistics;

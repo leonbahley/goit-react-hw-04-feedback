@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './FeedbackOptions.css';
+import css from './FeedbackOptions.module.css';
 
 const FeedbackOptions = ({
   handleGoodReview,
@@ -7,15 +7,19 @@ const FeedbackOptions = ({
   handleBadReview,
 }) => {
   return (
-    <ul className="BtnList">
+    <ul className={css.BtnList}>
       <li>
-        <button className="BtnOption" type="button" onClick={handleGoodReview}>
+        <button
+          className={css.BtnOption}
+          type="button"
+          onClick={handleGoodReview}
+        >
           Good
         </button>
       </li>
       <li>
         <button
-          className="BtnOption"
+          className={css.BtnOption}
           type="button"
           onClick={handleNeutralReview}
         >
@@ -23,7 +27,11 @@ const FeedbackOptions = ({
         </button>
       </li>
       <li>
-        <button className="BtnOption" type="button" onClick={handleBadReview}>
+        <button
+          className={css.BtnOption}
+          type="button"
+          onClick={handleBadReview}
+        >
           Bad
         </button>
       </li>
